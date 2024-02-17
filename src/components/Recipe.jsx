@@ -62,7 +62,7 @@ const Recipe = ({ food }) => {
             <p>Loading...</p>
           ) : (
             recipe.extendedIngredients.map((i) => (
-              <li className="text-md list-disc list-outside text-gray-900 font-medium pl-2">
+              <li className="text-md list-disc list-outside text-gray-900 font-medium pl-2 py-1">
                 {i.original}
               </li>
             ))
@@ -79,7 +79,7 @@ const Recipe = ({ food }) => {
             <p>Loading...</p>
           ) : (
             recipe.analyzedInstructions[0].steps.map((i) => (
-              <li className="text-md list-decimal list-outside text-gray-900 font-medium pl-2">
+              <li className="text-md list-decimal list-outside text-gray-900 font-medium pl-2 py-2">
                 {i.step}
                 <br />
               </li>
