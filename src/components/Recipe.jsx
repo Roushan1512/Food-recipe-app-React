@@ -82,7 +82,6 @@ const Recipe = ({ food }) => {
               <li className="text-md list-decimal list-outside text-gray-900 font-medium pl-2">
                 {i.step}
                 <br />
-                <br />
               </li>
             ))
           )}
