@@ -27,35 +27,66 @@ const Recipe = ({ food }) => {
   }, [food]);
 
   return (
-    <div className="w-1/2 absolute top-10 left-1/2">
-      <div>
-        <h1 className="text-center text-5xl font-semibold">{recipe.title}</h1>
+    <div className="h-[65vh] w-1/2 absolute left-1/2 flex flex-col justify-start items-center overflow-y-scroll scrollbar-hide">
+      <div className="w-[95%] mx-auto">
+        <h1 className="text-center text-4xl py-[0.5rem] font-bold bg-amber-500 bg-opacity-80 w-[100%] mx-auto rounded-full text-pretty">
+          {recipe.title}
+        </h1>
         <img
-          className="w-[60%] object-contain mt-10 object-center mx-auto rounded-3xl shadow-md shadow-black"
+          className="w-[80%] object-contain mt-6 object-center mx-auto rounded-3xl shadow-md shadow-black"
           src={recipe.image}
           alt=""
         />
-        <div className="text-lg pl-10 py-10">
-          <strong>⏳ {recipe.readyInMinutes} mins</strong>
-          <br />
-          <strong>🍜 Serves : {recipe.servings}</strong>
-          <br />
-          {recipe.vegetarian ? "🥦  Veg" : "🍗  Non Veg"}
-          <br />
-          💲 {recipe.pricePerServing / 100} per serving
+        <div className="text-sm px-10 py-2 flex items-center bg-amber-400 bg-opacity-80 rounded-full my-4">
+          <span className="flex-1 w-1/4 font-semibold">
+            ⏳ {recipe.readyInMinutes} mins
+          </span>
+          <span className="flex-1 w-1/4 font-semibold">
+            🍜 Serves : {recipe.servings}
+          </span>
+          <span className="flex-1 w-1/4 font-semibold">
+            {recipe.vegetarian ? "🥦  Veg" : "🍗  Non Veg"}
+          </span>
+          <span className="flex-1 w-1/4 font-semibold">
+            💲 {(recipe.pricePerServing / 100).toFixed(3)} per serving
+          </span>
         </div>
       </div>
       <br />
-      <div className="mx-8">
-        <h2 className="text-center text-xl font-bold underline">
-          Instructions
+      <div className="mx-auto w-[95%] bg-white bg-opacity-95 py-6 px-8 rounded-3xl shadow-inner shadow-black">
+        <h2 className="text-center text-2xl font-bold underline mb-8">
+          Ingredients Required
         </h2>
+        <ul>
+          {isLoading ? (
+            <p>Loading...</p>
+          ) : (
+            recipe.extendedIngredients.map((i) => (
+              <li className="text-md list-disc list-outside text-gray-900 font-medium pl-2">
+                {i.original}
+              </li>
+            ))
+          )}
+        </ul>
         <br />
-        {isLoading ? (
-          <p>Loading...</p>
-        ) : (
-          recipe.analyzedInstructions[0].steps.map((i) => <li>{i.step}</li>)
-        )}
+        <br />
+        <br />
+        <h2 className="text-center text-2xl font-bold underline mb-8">
+          Steps to Cook
+        </h2>
+        <ol>
+          {isLoading ? (
+            <p>Loading...</p>
+          ) : (
+            recipe.analyzedInstructions[0].steps.map((i) => (
+              <li className="text-md list-decimal list-outside text-gray-900 font-medium pl-2">
+                {i.step}
+                <br />
+                <br />
+              </li>
+            ))
+          )}
+        </ol>
       </div>
     </div>
   );

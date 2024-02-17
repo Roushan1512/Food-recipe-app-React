@@ -11,7 +11,7 @@ const Nav = () => {
       /> */}
       <GiChickenOven className="h-[100%] w-16 absolute left-4 my-0" />
       <h1 className="absolute left-[50%] [transform:translateX(-50%)] text-6xl font-semibold font-serif">
-        FoodApp
+        Food App
       </h1>
     </div>
   );

@@ -11,13 +11,15 @@ const App = () => {
   const [food, setFood] = useState({});
   const [check, setCheck] = useState(false);
   return (
-    <div className="h-[100vh] bg-yellow-200">
-      <Nav />
-      <Search foodData={foodData} setFoodData={setFoodData} />
-      <Container>
-        <Foodlist foodData={foodData} setFood={setFood} setCheck={setCheck} />
-        {check ? <Recipe food={food} /> : null}
-      </Container>
+    <div className="h-[100vh] bg-foodback bg-cover">
+      <div className="h-[100vh] backdrop-blur-[4px] bg-black bg-opacity-40">
+        <Nav />
+        <Search foodData={foodData} setFoodData={setFoodData} />
+        <Container>
+          <Foodlist foodData={foodData} setFood={setFood} setCheck={setCheck} />
+          {check ? <Recipe food={food} /> : null}
+        </Container>
+      </div>
     </div>
   );
 };
