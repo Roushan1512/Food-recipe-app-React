@@ -32,6 +32,10 @@ const Search = ({ foodData, setFoodData }) => {
         });
     } else {
       console.log("Input field blank");
+      setQuery("Input field blank");
+      setTimeout(() => {
+        setQuery("");
+      }, 1000);
     }
   }
   return (
