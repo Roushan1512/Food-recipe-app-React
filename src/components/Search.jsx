@@ -60,7 +60,7 @@ const Search = ({ foodData, setFoodData }) => {
           type="submit"
           className="ml-[2.5rem] border-2 border-black h-[60%] w-[15%] rounded-3xl font-medium hover:text-white hover:bg-black"
         >
-          Search Here
+          Search
         </button>
       </form>
     </div>
