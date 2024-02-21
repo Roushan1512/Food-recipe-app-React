@@ -6,8 +6,9 @@ const Recipe = ({ food }) => {
   const [recipe, setRecipe] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
-  const URL = `https://api.spoonacular.com/recipes/${food.id}/information`;
-  const api_Key = "2a2d51b25c3a4a4c81b7fa122a6d8cd5";
+  const URL = `${import.meta.env.VITE_URL}/${food.id}/information`;
+  const api_Key = import.meta.env.VITE_API_KEY;
+
   useEffect(() => {
     if (food.id != undefined) {
       async function recipecall() {
@@ -78,8 +79,11 @@ const Recipe = ({ food }) => {
           {isLoading ? (
             <p>Loading...</p>
           ) : (
-            recipe.analyzedInstructions[0].steps.map((i) => (
-              <li className="text-md list-decimal list-outside text-gray-900 font-medium pl-2 py-2">
+            recipe.analyzedInstructions[0].steps.map((i, index) => (
+              <li
+                key={index}
+                className="text-md list-decimal list-outside text-gray-900 font-medium pl-2 py-2"
+              >
                 {i.step}
                 <br />
               </li>

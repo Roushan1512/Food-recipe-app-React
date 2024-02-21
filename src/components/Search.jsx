@@ -4,8 +4,8 @@ import { useState } from "react";
 import axios from "axios";
 import { IoMdSearch } from "react-icons/io";
 
-const URL = "https://api.spoonacular.com/recipes/complexSearch";
-const api_Key = "2a2d51b25c3a4a4c81b7fa122a6d8cd5";
+const URL = `${import.meta.env.VITE_URL}/complexSearch`;
+const api_Key = import.meta.env.VITE_API_KEY;
 
 const Search = ({ foodData, setFoodData }) => {
   const [query, setQuery] = useState("");
